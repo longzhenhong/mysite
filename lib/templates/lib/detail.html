@@ -7,7 +7,7 @@
         <td>publish</td>
         <td>publish_time</td>
     </tr>
-    {% for book in book_list.all%}
+    {% for book in book_list.all %}
     <tr>
         <td>{{ book.name }}</td>
         <td>{{ book.author }}</td>
@@ -16,3 +16,11 @@
     </tr>
     {% endfor %}
 </table>
+
+<from action="{% url 'lib:addBook' %}" method="post" name="addBook">
+{% csrf_token %}
+<p><span>bookName:</span><input type="text" name="name"></p>
+<p><span>bookAuthor:</span><input type="text" name="author"></p>
+<p><span>bookDepartment:</span><input type="text" name="pub_house"></p>
+<input type="submit" value="add">
+</from>
