@@ -11,16 +11,17 @@
     <tr>
         <td>{{ book.name }}</td>
         <td>{{ book.author }}</td>
-        <td>{{ book.pub_house }}</td
+        <td>{{ book.pub_house }}</td>
         <td>{{ book.pub_date }}</td>
+        <td><a href="{% url 'lib:delBook' book.id %}">delete</a></td>
     </tr>
     {% endfor %}
 </table>
 
-<from action="{% url 'lib:addBook' %}" method="post" name="addBook">
+<form action="{% url 'lib:addBook' %}" method="post" name="addBook">
 {% csrf_token %}
 <p><span>bookName:</span><input type="text" name="name"></p>
 <p><span>bookAuthor:</span><input type="text" name="author"></p>
 <p><span>bookDepartment:</span><input type="text" name="pub_house"></p>
 <input type="submit" value="add">
-</from>
+</form>
